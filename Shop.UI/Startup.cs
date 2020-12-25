@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shop.Database;
 using Shop.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-
 
 
 namespace Shop.UI
@@ -29,8 +28,11 @@ namespace Shop.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(_config["DefaultConnection"],b=>b.MigrationsAssembly("Shop.UI")));
+            services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(_config["DefaultConnection"]));
         }
+        //"Server=DESKTOP-RT1H2FS\\MAINDB;Database=ECommerce;Trusted_Connection=true;MultipleActiveResultSets=true"
+        //"Server=DESKTOP-3LDF8NN\\SQLEXPRESS;Database=ECommerce;Trusted_Connection=true;MultipleActiveResultSets=true"
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
