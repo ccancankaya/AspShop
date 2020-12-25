@@ -2,10 +2,11 @@
 using Shop.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Application.Products
+namespace Shop.Application.CreateProducts
 {
     public class CreateProduct
     {
@@ -17,16 +18,25 @@ namespace Shop.Application.Products
         }
 
         // eger Task<specified> belirtmezsek void gibi çalışır
-        public async Task Do(string Name,string Description,decimal Value)
+        public async Task Do(ProductViewModel vm)
         {
-            _context.Products.Add(new Product 
-            { 
-                Name=Name,
-                Description=Description,
-                Value=Value
+            _context.Products.Add(new Product
+            {
+                Name = vm.Name,
+                Description = vm.Description,
+                Value = vm.Value
             });
 
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
+
+    public class ProductViewModel
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal Value { get; set; }
+    }
+
 }
