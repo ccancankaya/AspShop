@@ -25,9 +25,10 @@
         },
         addProduct() {
             this.loading = true;
-            axios.post('/Admin.products', this.productModel)
+            axios.post('/Admin/products', this.productModel)
                 .then(res => {
-                    console.log()
+                    console.log(res.data);
+                    this.products.push(res.data);
                 })
                 .catch(err => {
                     console.log(err)

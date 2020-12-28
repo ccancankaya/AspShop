@@ -16,11 +16,12 @@ namespace Shop.Application.ProductsAdmin
         }
 
 
-        public async Task Do(int id)
+        public async Task<bool> Do(int id)
         {
             var Product = _ctx.Products.FirstOrDefault(x => x.Id == id);
             _ctx.Products.Remove(Product);
             await _ctx.SaveChangesAsync();
+            return true;
         }
 
 
