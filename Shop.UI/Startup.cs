@@ -58,6 +58,8 @@ namespace Shop.UI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                //Added for use name of controllers
+                endpoints.MapControllers();
             });
         }
     }
