@@ -11,6 +11,9 @@
         },
         products: []
     },
+    mounted() {
+        this.getProducts();
+    },
     methods: {
         getProducts() {
             this.loading = true
@@ -29,7 +32,13 @@
             this.loading = true
             axios.get('/Admin/products/' + id)
                 .then(res => {
-                    this.products = res.data
+                    var product = res.data;
+                    this.productModel = {
+                        id: product.id,
+                        name: product.name,
+                        description: product.name,
+                        value: product.value
+                    };
                 })
                 .catch(err => {
                     console.log(err)
@@ -52,15 +61,9 @@
                     this.loading = false
                 });
         },
-        editProduct(product, index) {
+        editProduct(id, index) {
             this.objectIndex = index;
-            this.productModel = {
-                id: product.id,
-                name: product.name,
-                description: product.description,
-                value: product.value
-
-            }
+            this.getProduct(id);
         },
         updateProduct() {
             this.loading = true;
@@ -78,7 +81,7 @@
         },
         deleteProduct(id, index) {
             this.loading = true
-            axios.delete('/Admin/products' + id)
+            axios.delete('/Admin/products/' + id)
                 .then(res => {
                     this.products.splice(index, 1);
                 })
