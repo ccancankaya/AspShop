@@ -38,30 +38,32 @@
                 </table>
             </div>
 
-           
-                <div class="field">
-                    <div class="control">
-                        <input class="input" v-model="productModel.name" />
-                    </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input" v-model="productModel.name" />
                 </div>
-                <div class="field">
-                    <div class="control">
-                        <input class="input" v-model="productModel.description" />
-                    </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input" v-model="productModel.description" />
                 </div>
-                <div class="field">
-                    <div class="control">
-                        <input class="input" v-model="productModel.value" />
-                    </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input" v-model="productModel.value" />
                 </div>
-                <div class="field">
-                    <div class="control">
-                        <input class="input" v-model="productModel.name" />
-                    </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input" v-model="productModel.name" />
                 </div>
-                <button @@click="addProduct" v-if="!productModel.id">Add product</button>
-                <button @@click="updateProduct" v-else>Update product</button>
-   
+            </div>
+            <button @@click="addProduct" v-if="!productModel.id">Add product</button>
+            <button @@click="updateProduct" v-else>Update product</button>
+            <button @@click="updateProduct" v-else>Update product</button>
+
+
         </div>
     </div>
 
